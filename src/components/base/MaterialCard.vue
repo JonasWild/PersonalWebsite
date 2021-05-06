@@ -19,6 +19,7 @@
         :class="{
           'pa-7': !$slots.image
         }"
+        :id="customid"
         :color="color"
         :max-height="icon ? 90 : undefined"
         :width="icon ? 'auto' : '100%'"
@@ -38,7 +39,7 @@
 
         <div
           v-else-if="title && !icon"
-          class="display-1 font-weight-light"
+          class="text-h4 font-weight-light"
           v-text="title"
         />
 
@@ -50,7 +51,7 @@
 
         <div
           v-if="text"
-          class="headline font-weight-thin"
+          class="text-h5 font-weight-thin"
           v-text="text"
         />
       </v-sheet>
@@ -94,6 +95,10 @@
       avatar: {
         type: String,
         default: '',
+      },
+      customid: {
+        type: String,
+        default: () => ({}),
       },
       color: {
         type: String,

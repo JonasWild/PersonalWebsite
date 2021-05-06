@@ -9,56 +9,17 @@
         cols="12"
         lg="4"
       >
-        <base-material-chart-card
-          :data="emailsSubscriptionChart.data"
-          :options="emailsSubscriptionChart.options"
-          :responsive-options="emailsSubscriptionChart.responsiveOptions"
-          color="#E91E63"
-          hover-reveal
+        <projectcard
+          color="#998866"
           type="Bar"
+          customid="chess_card"
         >
-          <template v-slot:reveal-actions>
-            <v-tooltip bottom>
-              <template v-slot:activator="{ attrs, on }">
-                <v-btn
-                  v-bind="attrs"
-                  color="info"
-                  icon
-                  v-on="on"
-                >
-                  <v-icon
-                    color="info"
-                  >
-                    mdi-refresh
-                  </v-icon>
-                </v-btn>
-              </template>
-
-              <span>Refresh</span>
-            </v-tooltip>
-
-            <v-tooltip bottom>
-              <template v-slot:activator="{ attrs, on }">
-                <v-btn
-                  v-bind="attrs"
-                  light
-                  icon
-                  v-on="on"
-                >
-                  <v-icon>mdi-pencil</v-icon>
-                </v-btn>
-              </template>
-
-              <span>Change Date</span>
-            </v-tooltip>
-          </template>
-
           <h4 class="card-title font-weight-light mt-2 ml-2">
-            Website Views
+            Schach
           </h4>
 
           <p class="d-inline-flex font-weight-light ml-2 mt-1">
-            Last Campaign Performance
+            Digitaler Trainer
           </p>
 
           <template v-slot:actions>
@@ -68,7 +29,63 @@
             >
               mdi-clock-outline
             </v-icon>
-            <span class="caption grey--text font-weight-light">updated 10 minutes ago</span>
+            <span class="text-caption grey--text font-weight-light">updated 10 minutes ago</span>
+          </template>
+        </projectcard>
+      </v-col>
+
+      <v-col
+        cols="12"
+        lg="4"
+      >
+        <base-project-card
+          color="#998866"
+          type="Bar"
+        >
+          <h4 class="card-title font-weight-light mt-2 ml-2">
+            Schach
+          </h4>
+
+          <p class="d-inline-flex font-weight-light ml-2 mt-1">
+            Digitaler Trainer
+          </p>
+
+          <template v-slot:actions>
+            <v-icon
+              class="mr-1"
+              small
+            >
+              mdi-clock-outline
+            </v-icon>
+            <span class="text-caption grey--text font-weight-light">updated 10 minutes ago</span>
+          </template>
+        </base-project-card>
+      </v-col>
+
+      <v-col
+        cols="12"
+        lg="4"
+      >
+        <base-material-chart-card
+          color="#998866"
+          type="Bar"
+        >
+          <h4 class="card-title font-weight-light mt-2 ml-2">
+            Schach
+          </h4>
+
+          <p class="d-inline-flex font-weight-light ml-2 mt-1">
+            Digitaler Trainer
+          </p>
+
+          <template v-slot:actions>
+            <v-icon
+              class="mr-1"
+              small
+            >
+              mdi-clock-outline
+            </v-icon>
+            <span class="text-caption grey--text font-weight-light">updated 10 minutes ago</span>
           </template>
         </base-material-chart-card>
       </v-col>
@@ -142,7 +159,7 @@
             >
               mdi-clock-outline
             </v-icon>
-            <span class="caption grey--text font-weight-light">updated 4 minutes ago</span>
+            <span class="text-caption grey--text font-weight-light">updated 4 minutes ago</span>
           </template>
         </base-material-chart-card>
       </v-col>
@@ -209,7 +226,7 @@
             >
               mdi-clock-outline
             </v-icon>
-            <span class="caption grey--text font-weight-light">campaign sent 26 minutes ago</span>
+            <span class="text-caption grey--text font-weight-light">campaign sent 26 minutes ago</span>
           </template>
         </base-material-chart-card>
       </v-col>
@@ -284,11 +301,11 @@
           class="px-5 py-3"
         >
           <template v-slot:heading>
-            <div class="display-2 font-weight-light">
+            <div class="text-h3 font-weight-light">
               Employees Stats
             </div>
 
-            <div class="subtitle-1 font-weight-light">
+            <div class="text-subtitle-1 font-weight-light">
               New employees on 15th September, 2016
             </div>
           </template>
@@ -393,8 +410,12 @@
 </template>
 
 <script>
+
   export default {
     name: 'DashboardDashboard',
+    components: {
+      Projectcard: () => import('./component/Projectcard'),
+    },
 
     data () {
       return {
@@ -442,9 +463,9 @@
         },
         emailsSubscriptionChart: {
           data: {
-            labels: ['Ja', 'Fe', 'Ma', 'Ap', 'Mai', 'Ju', 'Jul', 'Au', 'Se', 'Oc', 'No', 'De'],
+            labels: ['Ja'],
             series: [
-              [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
+              [542],
 
             ],
           },
@@ -599,3 +620,12 @@
     },
   }
 </script>
+
+<style lang="sass">
+  #chess_card
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCA4MDAgODAwIj4NCjxnIGlkPSJicm93bi1ib2FyZCI+DQo8ZyBpZD0iTGlnaHQiIGZpbGw9IiNkZWUzZTYiPg0KPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI4MDAiLz4NCjwvZz4NCjxnIGlkPSJGcmFtZSIgZmlsbD0ibm9uZSI+DQo8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIvPg0KPC9nPg0KPGcgaWQ9IkRhcmsiIGZpbGw9IiM4Y2EyYWQiPg0KPGcgaWQ9InJheiI+DQo8ZyBpZD0iZHZhIj4NCjxnIGlkPSJ0cmkiPg0KPHJlY3QgeD0iMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPg0KPHJlY3QgeD0iMzAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPg0KPHJlY3QgeD0iNTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPg0KPHJlY3QgeD0iNzAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIvPg0KPC9nPg0KPHVzZSB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTAwLDEwMCkiIHhsaW5rOmhyZWY9IiN0cmkiLz4NCjwvZz4NCjx1c2UgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwyMDApIiB4bGluazpocmVmPSIjZHZhIi8+DQo8L2c+DQo8dXNlIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsNDAwKSIgeGxpbms6aHJlZj0iI3JheiIvPg0KPC9nPg0KPC9nPg0KPC9zdmc+')
+    background-color: transparent !important
+    border-color: transparent !important
+    height: 150px !important
+    width: 150px !important
+</style>
