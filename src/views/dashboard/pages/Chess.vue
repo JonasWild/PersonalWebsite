@@ -4,7 +4,7 @@
     fluid
     tag="section"
   >
-      <chessboard />
+    <chessboard />
   </v-container>
 </template>
 

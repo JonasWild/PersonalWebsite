@@ -5,45 +5,34 @@
     :dark="barColor !== 'rgba(228, 226, 226, 1), rgba(255, 255, 255, 0.7)'"
     :expand-on-hover="expandOnHover"
     :right="$vuetify.rtl"
-    :src="barImage"
     mobile-break-point="960"
     app
     width="260"
     v-bind="$attrs"
+    color="#111"
   >
-    <template v-slot:img="props">
-      <v-img
-        :gradient="`to bottom, ${barColor}`"
-        v-bind="props"
-      />
-    </template>
-
-    <v-divider class="mb-1" />
-
-    <v-list
+    <div
+      id="nav_header_container"
       dense
       nav
     >
-      <v-list-item>
-        <v-list-item-avatar
-          class="align-self-center"
-          color="white"
-          contain
-        >
-          <v-img
-            src="https://demos.creative-tim.com/vuetify-material-dashboard/favicon.ico"
-            max-height="30"
-          />
-        </v-list-item-avatar>
+      <div id="profil_image" />
 
-        <v-list-item-content>
-          <v-list-item-title
-            class="text-h4"
-            v-text="profile.title"
-          />
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
+      <div id="profil_text_container">
+        <div
+          class="text-h3"
+          style="text-align: center;"
+          v-text="profile.title"
+        />
+        <a
+          href="mailto:vints.switzerland@gmail.com"
+          class="text-h5"
+          style="color: #999999;     text-align: center;"
+        >
+          jonas.wild2@hotmail.de
+        </a>
+      </div>
+    </div>
 
     <v-divider class="mb-2" />
 
@@ -51,31 +40,21 @@
       expand
       nav
     >
-      <!-- Style cascading bug  -->
-      <!-- https://github.com/vuetifyjs/vuetify/pull/8574 -->
       <div />
 
-      <template v-for="(item, i) in computedItems">
-        <base-item-group
-          v-if="item.children"
-          :key="`group-${i}`"
-          :item="item"
-        >
-          <!--  -->
-        </base-item-group>
-
-        <base-item
-          v-else
-          :key="`item-${i}`"
-          :item="item"
-        />
+      <template>
+        <div>
+          <v-list>
+            <my-list-item
+              v-for="item in items"
+              :key="item.title"
+              :item="item"
+            />
+          </v-list>
+        </div>
       </template>
-
-      <!-- Style cascading bug  -->
-      <!-- https://github.com/vuetifyjs/vuetify/pull/8574 -->
       <div />
     </v-list>
-
   </v-navigation-drawer>
 </template>
 
@@ -87,7 +66,9 @@
 
   export default {
     name: 'DashboardCoreDrawer',
-
+    components: {
+      MyListItem: () => import('../../component/MyListItem'),
+    },
     props: {
       expandOnHover: {
         type: Boolean,
@@ -101,37 +82,24 @@
           icon: 'mdi-view-dashboard',
           title: 'Projekte',
           to: '/',
+          items: [
+            {
+              icon: 'mdi-account',
+              title: 'V I N T S',
+              to: '/projects/vints',
+            },
+            {
+              icon: 'mdi-account',
+              title: 'Schach',
+              to: '/projects/chess',
+            },
+          ],
         },
-        // {
-        //   icon: 'mdi-account',
-        //   title: 'user',
-        //   to: '/pages/user',
-        // },
-        // {
-        //   title: 'rtables',
-        //   icon: 'mdi-clipboard-outline',
-        //   to: '/tables/regular-tables',
-        // },
-        // {
-        //   title: 'typography',
-        //   icon: 'mdi-format-font',
-        //   to: '/components/typography',
-        // },
-        // {
-        //   title: 'icons',
-        //   icon: 'mdi-chart-bubble',
-        //   to: '/components/icons',
-        // },
-        // {
-        //   title: 'google',
-        //   icon: 'mdi-map-marker',
-        //   to: '/maps/google-maps',
-        // },
-        // {
-        //   title: 'notifications',
-        //   icon: 'mdi-bell',
-        //   to: '/components/notifications',
-        // },
+        {
+          icon: 'mdi-account',
+          title: 'Über mich',
+          to: '/pages/user',
+        },
       ],
     }),
 
@@ -170,6 +138,29 @@
 
 <style lang="sass">
   @import '~vuetify/src/styles/tools/_rtl.sass'
+
+  #profil_text_container
+    margin: 30px
+    color: white
+
+  #nav_header_container
+    display: flex
+    justify-content: center
+    flex-direction: column
+    align-items: center
+
+  #profil_image
+    background-image: url('https://vintblobstorage.blob.core.windows.net/imagecontainer/AboutJonas.jpg')
+    background-color: transparent !important
+    border-color: transparent !important
+    height: 150px !important
+    width: 150px !important
+    border-radius: 75px
+    margin-top: 25px
+    min-width: max-content
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
 
   #core-navigation-drawer
     .v-list-group__header.v-list-item--active:before

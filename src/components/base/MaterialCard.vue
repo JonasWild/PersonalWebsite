@@ -16,10 +16,10 @@
 
       <v-sheet
         v-else
+        :id="customid"
         :class="{
           'pa-7': !$slots.image
         }"
-        :id="customid"
         :color="color"
         :max-height="icon ? 90 : undefined"
         :width="icon ? 'auto' : '100%'"
