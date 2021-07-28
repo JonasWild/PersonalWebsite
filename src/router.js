@@ -18,6 +18,11 @@ export default new Router({
           component: () => import('@/views/dashboard/Dashboard'),
         },
         {
+          name: 'Vints',
+          path: 'projects/vints',
+          component: () => import('@/views/dashboard/pages/Vints'),
+        },
+        {
           name: 'Chess',
           path: 'projects/chess',
           component: () => import('@/views/dashboard/pages/Chess'),

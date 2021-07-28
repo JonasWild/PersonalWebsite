@@ -21,8 +21,6 @@
             v-text="link.text"
           />
         </v-col>
-
-        <v-spacer class="hidden-sm-and-down" />
       </v-row>
     </v-container>
   </v-footer>

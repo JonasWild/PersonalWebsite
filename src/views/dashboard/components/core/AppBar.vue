@@ -24,9 +24,9 @@
     </v-btn>
 
     <v-toolbar-title
+      id="route_title"
       class="hidden-sm-and-down font-weight-light"
       v-text="currentRouteName"
-      id="route_title"
     />
 
     <v-spacer />

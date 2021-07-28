@@ -1,5 +1,5 @@
 module.exports = {
-  css: {sourceMap: true},
+  css: { sourceMap: true },
 
   devServer: {
     disableHostCheck: true,

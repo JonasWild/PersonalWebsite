@@ -5,9 +5,9 @@
     :dark="barColor !== 'rgba(228, 226, 226, 1), rgba(255, 255, 255, 0.7)'"
     :expand-on-hover="expandOnHover"
     :right="$vuetify.rtl"
-    mobile-break-point="960"
+    mobile-break-point="30000"
     app
-    width="260"
+    width="320"
     v-bind="$attrs"
     color="#111"
   >
@@ -34,14 +34,16 @@
       </div>
     </div>
 
-    <v-divider class="mb-2" />
+    <v-divider
+      class="mb-2"
+      id='sidebar_seperator'
+    />
 
     <v-list
       expand
       nav
+      id='sidebar_list'
     >
-      <div />
-
       <template>
         <div>
           <v-list>
@@ -53,7 +55,6 @@
           </v-list>
         </div>
       </template>
-      <div />
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -84,6 +85,11 @@
           to: '/',
           items: [
             {
+              icon: 'mdi-view-dashboard',
+              title: 'Alle',
+              to: '/',
+            },
+            {
               icon: 'mdi-account',
               title: 'V I N T S',
               to: '/projects/vints',
@@ -99,6 +105,23 @@
           icon: 'mdi-account',
           title: 'Über mich',
           to: '/pages/user',
+          items: [
+            {
+              icon: 'mdi-view-dashboard',
+              title: 'Information',
+              to: '/',
+            },
+            {
+              icon: 'mdi-account',
+              title: 'Lebenslauf',
+              to: '/projects/vints',
+            },
+            {
+              icon: 'mdi-account',
+              title: 'Skills',
+              to: '/projects/chess',
+            },
+          ],
         },
       ],
     }),
@@ -162,9 +185,18 @@
     background-size: cover
     background-position: center
 
+  #sidebar_list
+    padding-left: 5px
+    padding-right: 5px
+    padding-top: 0px
+
+  #sidebar_seperator
+    height: 0px
+    margin-bottom: 0px !important
+
   #core-navigation-drawer
     .v-list-group__header.v-list-item--active:before
-      opacity: .24
+      opacity: 0.05
 
     .v-list-item
       &__icon--text,
